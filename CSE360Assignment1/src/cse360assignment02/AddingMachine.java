@@ -2,13 +2,14 @@ package cse360assignment02;
 
 public class AddingMachine {
 	  private int total;
-	  
+	  private String theString;
 	  
 	  /*
 	   * Default Constructor --> total = 0
 	   */
 	  public AddingMachine () {
 	    total = 0;  // not needed - included for clarity
+	    theString = "0";
 	  }
 	  
 	  /* getTotal --> gets the private value
@@ -16,7 +17,7 @@ public class AddingMachine {
 	   */
 	  
 	  public int getTotal () {
-	    return 0;
+	    return this.total;
 	  }
 	  
 	  /* 
@@ -26,6 +27,8 @@ public class AddingMachine {
 	   */
 	  
 	  public void add (int value) {
+		  this.total = total + value;
+		  theString += " + " + value;
 	  }
 	  
 	  
@@ -35,6 +38,8 @@ public class AddingMachine {
 	   *  @return void
 	   */
 	  public void subtract (int value) {
+		  this.total = total - value;
+		  theString += " - " + value;
 	  }
 	  
 	  
@@ -43,7 +48,7 @@ public class AddingMachine {
 	   * @return String that has the total value
 	   */
 	 public String toString () {
-	    return "";
+	    return theString;
 	  }
 	  
 	  
@@ -52,5 +57,24 @@ public class AddingMachine {
 	  * @return void
 	  */
 	public void clear() {
+		this.total = 0;
+		this.theString = "0";
 	  }
+	
+	public static void main(String args[])
+	{
+		AddingMachine testMachine = new AddingMachine();
+		
+		testMachine.add(4);
+		testMachine.subtract(2);
+		testMachine.add(8);
+		System.out.print(testMachine.toString());
+		System.out.println(" = " + testMachine.getTotal());
+		System.out.println("\nNOW CLEAR TESTMACHINE");
+		testMachine.clear();
+		System.out.println(testMachine.toString());
+
+		
 	}
+
+}
